@@ -178,9 +178,9 @@ Resources:
          sed -i '/executor = SequentialExecutor/ a executor = LocalExecutor' ~/airflow/airflow.cfg
          airflow initdb
          # Move all the files to the ~/airflow directory. The Airflow config file is setup to hold all the DAG related files in the ~/airflow/ folder.
-         mv airflow-mlflow-aws.git/* ~/airflow/
+         mv airflow-mlflow-aws/* ~/airflow/
          # Delete the higher-level git repository directory
-         rm -rf airflow-mlflow-aws.git
+         rm -rf airflow-mlflow-aws
          # Replace the name of the S3 bucket in each of the .scala files. CHANGE THE HIGHLIGHTED PORTION BELOW TO THE NAME OF THE S3 BUCKET YOU CREATED IN STEP 1. The below command replaces the instance of the string ‘<s3-bucket>’ in each of the scripts to the name of the actual bucket.
          sed -i 's/<s3-bucket>/${S3BucketNameAirflow}/g' /root/airflow/dags/transform/*
          # Run Airflow webserver
