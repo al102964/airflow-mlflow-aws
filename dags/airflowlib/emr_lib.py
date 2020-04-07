@@ -52,6 +52,14 @@ def create_cluster(region_name, cluster_name='Airflow-' + str(datetime.now()), r
             { 'Name': 'hive' },
             { 'Name': 'livy' },
             { 'Name': 'zeppelin' }
+        ],
+        BootstrapActions=[
+            {
+                'Name': 'install mlflow',
+                'ScriptBootstrapAction': {
+                    'Path': 's3://al102964-bucket1/bootstrap.sh',                    
+                }
+            }
         ]
     )
     return cluster_response['JobFlowId']

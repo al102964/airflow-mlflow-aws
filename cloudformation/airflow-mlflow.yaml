@@ -153,7 +153,7 @@ Resources:
          # Install git
          sudo yum install -y git
          # Clone the git repository
-         git clone https://github.com/aws-samples/aws-concurrent-data-orchestration-pipeline-emr-livy.git
+         git clone https://github.com/al102964/airflow-mlflow-aws.git
          sudo pip install boto3
          # Install airflow using pip
          echo "Install Apache Airflow"
@@ -178,9 +178,9 @@ Resources:
          sed -i '/executor = SequentialExecutor/ a executor = LocalExecutor' ~/airflow/airflow.cfg
          airflow initdb
          # Move all the files to the ~/airflow directory. The Airflow config file is setup to hold all the DAG related files in the ~/airflow/ folder.
-         mv aws-concurrent-data-orchestration-pipeline-emr-livy/* ~/airflow/
+         mv airflow-mlflow-aws.git/* ~/airflow/
          # Delete the higher-level git repository directory
-         rm -rf aws-concurrent-data-orchestration-pipeline-emr-livy
+         rm -rf airflow-mlflow-aws.git
          # Replace the name of the S3 bucket in each of the .scala files. CHANGE THE HIGHLIGHTED PORTION BELOW TO THE NAME OF THE S3 BUCKET YOU CREATED IN STEP 1. The below command replaces the instance of the string ‘<s3-bucket>’ in each of the scripts to the name of the actual bucket.
          sed -i 's/<s3-bucket>/${S3BucketNameAirflow}/g' /root/airflow/dags/transform/*
          # Run Airflow webserver
