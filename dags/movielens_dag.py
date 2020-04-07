@@ -110,7 +110,7 @@ def transform_genome_tags_to_parquet(**kwargs):
     emr.track_statement_progress(cluster_dns, statement_response.headers)
     emr.kill_spark_session(session_url)
 
-def create_joins(**kwargs)
+def create_joins(**kwargs):
     # ti is the Task Instance
     ti = kwargs['ti']
     cluster_id = ti.xcom_pull(task_ids='create_cluster')
@@ -123,7 +123,7 @@ def create_joins(**kwargs)
     emr.kill_spark_session(session_url)
 
 
-def create_linear_regression(**kwargs)
+def create_linear_regression(**kwargs):
     # ti is the Task Instance
     ti = kwargs['ti']
     cluster_id = ti.xcom_pull(task_ids='create_cluster')
