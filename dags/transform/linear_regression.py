@@ -30,6 +30,6 @@ with mlflow.start_run():
     trainingSummary = lr_model.summary
     print("RMSE: %f" % trainingSummary.rootMeanSquaredError)
     print("r2: %f" % trainingSummary.r2)
-
+    mlflow.spark.log_model(lr_model, "spark-model")
     mlflow.log_metric("rmse", trainingSummary.rootMeanSquaredError)
     mlflow.log_metric("r2", trainingSummary.r2)
