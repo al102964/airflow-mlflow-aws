@@ -1,6 +1,7 @@
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.regression import LinearRegression
 import mlflow
+import mlflow.spark
 
 completa_metricas = spark.read.parquet("s3://<s3-bucket>/movielens-parquet/training/")
 
