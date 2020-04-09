@@ -37,6 +37,8 @@ genome_tags_filtrado = genome_tags.where(f.col("tag").isin(categorias))
 etiquetas_df = genome_scores.join(genome_tags_filtrado,['tagId'],'leftsemi')
 
 etiquetas_relevancia = etiquetas_df.join(genome_tags_filtrado,['tagId'],'left')
+etiquetas_relevancia = etiquetas_relevancia.withColumn("tags", f.regexp_replace(f.col("tag"), " ", "_"))
+etiquetas_relevancia = etiquetas_relevancia.drop("tag").withColumnRenamed("tags","tag")
 
 completa = etiquetas_relevancia.groupby("movieId").pivot("tag").agg(f.avg('relevance'))
 
