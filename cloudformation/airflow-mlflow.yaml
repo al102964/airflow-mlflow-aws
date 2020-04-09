@@ -166,6 +166,7 @@ Resources:
          sudo pip install --upgrade six
          sudo pip install markupsafe
          sudo pip install --upgrade MarkupSafe
+         sudo pip install SQLAlchemy==1.3.15
          echo 'export PATH=/usr/local/bin:$PATH' >> /root/.bash_profile
          source /root/.bash_profile
          # Initialize Airflow

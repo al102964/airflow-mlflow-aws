@@ -96,7 +96,7 @@ def wait_for_idle_session(master_dns, response_headers):
     session_url = host + response_headers['location']
     while status != 'idle':
         time.sleep(3)
-        status_response = requests.get(session_url, headers=response_headers)
+        status_response = requests.get(session_url)
         status = status_response.json()['state']
         logging.info('Session status: ' + status)
     return session_url
